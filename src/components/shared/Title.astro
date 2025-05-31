@@ -1,0 +1,63 @@
+---
+export interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  variant?: 'primary' | 'secondary' | 'luxury' | 'minimal';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  align?: 'left' | 'center' | 'right';
+  gradient?: boolean;
+  class?: string;
+}
+
+const {
+  as: Tag = 'h1',
+  variant = 'luxury',
+  size = 'lg',
+  align = 'center',
+  gradient = false,
+  class: className = ''
+} = Astro.props;
+
+const sizeMap = {
+  xs: 'text-lg',
+  sm: 'text-xl',
+  md: 'text-2xl',
+  lg: 'text-3xl',
+  xl: 'text-4xl',
+  '2xl': 'text-5xl',
+  '3xl': 'text-6xl'
+};
+
+const variantMap = {
+  primary: 'text-[#2A3729] dark:text-white',
+  secondary: 'text-[#265143] dark:text-neutral-200',
+  luxury: 'text-[#2A3729] dark:text-white',
+  minimal: 'text-black dark:text-white'
+};
+
+const alignMap = {
+  left: 'text-left',
+  center: 'text-center', 
+  right: 'text-right'
+};
+
+const gradientClass = gradient 
+  ? 'bg-gradient-to-r from-[#2A3729] via-[#265143] to-[#2A3729] bg-clip-text text-transparent dark:from-[#265143] dark:via-white dark:to-neutral-100'
+  : variantMap[variant];
+const titleClasses = [
+  sizeMap[size],
+  gradient ? gradientClass : variantMap[variant],
+  alignMap[align],
+  'font-bold',
+  'tracking-tight',
+  'leading-tight',
+  'mb-8',
+  'transition-colors',
+  'duration-300',
+  gradient ? '' : 'drop-shadow-sm',
+  className
+].filter(Boolean).join(' ');
+---
+
+<Tag class={titleClasses}>
+  <slot />
+</Tag>

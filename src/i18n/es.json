@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "lifestyle": "Lifestyle",
+    "plans": "Planos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "tagline": "VIVE LO EXTRAORDINARIO",
+    "title": "ALTA NORTE",
+    "subtitle": "Vive la experiencia",
+    "cta": "CONOCE MÁS",
+    "scroll": ""
+  },
+  "about": {
+    "hero_title": "ALTA NORTE",
+    "hero_cta": "COTIZA Y APARTA TU LOTE",
+    "title": "Alta Norte. Único en su tipo",
+    "description": "Para un estilo de vida rodeado de naturaleza, paz y lujo. Con extensos lotes campestres y amenidades de primer nivel, te invitamos a descubrir un nuevo norte para vivir.",
+    "tagline_1": "Diseñado para quienes buscan",
+    "tagline_2": "vivir lo extraordinario",
+    "features": {
+      "lots": {
+        "title": "Extensos",
+        "subtitle": "Lotes Campestres"
+      },
+      "amenities": {
+        "title": "Amenidades",
+        "subtitle": "de lujo"
+      },
+      "skiing": {
+        "title": "Pista",
+        "subtitle": "de esquí única en la región"
+      },
+      "activities": {
+        "title": "Canchas",
+        "subtitle": "Deportivas y Recreativas"
+      }
+    }
+  },
+  "lifestyle": {
+    "title": "LIFESTYLE",
+    "subtitle": "& AMENITIES",
+    "description": "Experimenta un lujo incomparable con nuestras amenidades exclusivas, incluyendo un resort de esquí de última generación, senderos serenos para caminatas y instalaciones de camping de primer nivel. Abraza un estilo de vida en medio de paisajes impresionantes.",
+    "categories": {
+      "ski_resort": "SKI RESORT",
+      "hiking_trails": "HIKING TRAILS",
+      "camping": "CAMPING"
+    },
+    "amenities": {
+      "ski_resort": "SKI RESORT",
+      "hiking": "HIKING",
+      "camping": "CAMPING",
+      "and_more": "AND MORE"
+    },
+    "badge": "Experiencia Premium"
+  },
+  "plans": {
+    "title": "PLANO INTERACTIVO",
+    "description": "Realiza un recorrido virtual inmersivo de nuestra comunidad residencial y explora los impresionantes alrededores desde la comodidad de tu hogar.",
+    "legend": {
+      "available": "Disponible",
+      "sold": "Vendido"
+    },
+    "cta": "¿TE INTERESA ESTE LOTE? ¡COTÍZALO!",
+    "tooltip": {
+      "lot": "Lote",
+      "size": "m²",
+      "available": "Disponible",
+      "sold": "Vendido"
+    }
+  },
+  "tour": {
+    "title": "360° VIRTUAL",
+    "subtitle": "TOUR",
+    "description": "Realiza un recorrido virtual inmersivo de nuestra comunidad residencial y explora los impresionantes alrededores desde la comodidad de tu hogar",
+    "cta": "INICIAR TOUR",
+    "badge": "VR Ready",
+    "experience": "360° Experience Próximamente",
+    "immersive": "Tour Virtual Inmersivo"
+  },
+  "contact": {
+    "title": "PONTE EN CONTACTO",
+    "description": "Conéctate con nuestro equipo de ventas para conocer más sobre la comunidad y descubrir las oportunidades que te esperan.",
+    "section_title": "CONTACTO",
+    "form": {
+      "name": "Nombre",
+      "email": "Email",
+      "message": "Mensaje",
+      "submit": "ENVIAR MENSAJE"
+    },
+    "info": {
+      "phone": "Teléfono",
+      "email": "Email"
+    },
+    "details": {
+      "phone": "+52 (444) 123-4567",
+      "email": "info@altanorte.mx"
+    },
+    "success": "¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.",
+    "error": "Por favor completa todos los campos."
+  },
+  "quote": {
+    "title": "COTIZA TU LOTE",
+    "subtitle": "Próximamente",
+    "description": "Obtén información exclusiva sobre nuestros lotes y sé el primero en conocer sobre las oportunidades de preventa."
+  },
+  "amenities": {
+    "title": "Amenidades",
+    "nature": "Naturaleza y Paisajes",
+    "skiing": "Resort de Esquí",
+    "sports": "Deportes y Recreación"
+  },
+  "footer": {
+    "tagline": "Un estilo de vida extraordinario en la Sierra Madre",
+    "links": {
+      "title": "Enlaces Rápidos",
+      "home": "Inicio",
+      "about": "Nosotros",
+      "lifestyle": "Lifestyle",
+      "plans": "Planos",
+      "contact": "Contacto"
+    },
+    "contact": {
+      "title": "Contacto",
+      "email": "info@altanorte.mx",
+      "phone": "+52 (444) 123-4567",
+      "location": "Sierra Madre, México"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp"
+    },
+    "copyright": "© 2025 Alta Norte. Todos los derechos reservados.",
+    "company": {
+      "name": "ALTA NORTE",
+      "type": "Desarrollo Campestre"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+---
+import { Logo } from './shared';
+
+interface Props {
+  currentLang: string;
+  translations: any;
+}
+
+const { currentLang, translations } = Astro.props;
+const navItems = [
+  { key: "home", href: "#inicio" },
+  { key: "about", href: "#nosotros" },
+  { key: "lifestyle", href: "#lifestyle" },
+  { key: "plans", href: "#planos" },
+  { key: "contact", href: "#contacto" },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-primary/20 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="#inicio" class="flex items-center group">
+          <Logo 
+            variant="horizontal" 
+            height={40}
+            className="group-hover:scale-105 transition-transform duration-300 filter brightness-0 invert"
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:block">
+        <div class="flex items-center space-x-8">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-white hover:text-primary-300 px-4 py-2 text-sm font-medium transition-all duration-300 hover:scale-105 relative group"
+            >
+              <span>{translations.nav[item.key]}</span>
+              <div class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-300 transition-all duration-300 group-hover:w-full"></div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center space-x-4">
+        <!-- Language Switcher -->
+        <div class="hidden md:block">
+          <a
+            href={currentLang === "es" ? "/en" : "/"}
+            class="text-white hover:text-primary-300 px-3 py-2 text-sm font-medium transition-all duration-300 hover:scale-105"
+          >
+            {currentLang === "es" ? "EN" : "ES"}
+          </a>
+        </div>
+
+        <!-- CTA Button -->
+        <button class="hidden sm:inline-flex items-center bg-primary hover:bg-primary-700 text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg group">
+          <span>COTIZAR</span>
+          <svg class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+          type="button"
+          class="lg:hidden text-white hover:text-primary-300 p-2 rounded-lg transition-colors duration-300"
+          aria-label="Open menu"
+          id="mobile-menu-button"
+        >
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="lg:hidden hidden" id="mobile-menu">
+      <div class="px-4 pt-4 pb-6 space-y-4 bg-surface/98 backdrop-blur-md border-t border-primary/20">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-white hover:text-primary-300 block px-4 py-3 text-base font-medium transition-all duration-300 hover:bg-primary/10 rounded-lg"
+          >
+            {translations.nav[item.key]}
+          </a>
+        ))}
+        
+        <div class="border-t border-gray-600 pt-4 space-y-4">
+          <!-- Language Switcher Mobile -->
+          <a
+            href={currentLang === "es" ? "/en" : "/"}
+            class="text-white hover:text-primary-300 block px-4 py-3 text-base font-medium transition-all duration-300"
+          >
+            {currentLang === "es" ? "English" : "Español"}
+          </a>
+          
+          <!-- CTA Button Mobile -->
+          <div class="px-4">
+            <button class="w-full bg-primary hover:bg-primary-700 text-white px-6 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-[1.02]">
+              COTIZAR LOTE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Enhanced Mobile Menu Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const nav = document.querySelector("nav");
+    
+    // Mobile menu toggle
+    mobileMenuButton?.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("hidden");
+      
+      // Animate hamburger icon
+      const icon = mobileMenuButton.querySelector('svg');
+      if (!mobileMenu?.classList.contains('hidden')) {
+        icon.style.transform = 'rotate(90deg)';
+      } else {
+        icon.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // Close mobile menu when clicking on links
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu?.classList.add('hidden');
+        const icon = mobileMenuButton?.querySelector('svg');
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      });
+    });
+
+    // Enhanced navbar scroll effect
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (nav) {
+        if (currentScrollY > 100) {
+          nav.classList.add('bg-surface/98');
+          nav.classList.remove('bg-surface/95');
+        } else {
+          nav.classList.add('bg-surface/95');
+          nav.classList.remove('bg-surface/98');
+        }
+        
+        // Hide/show navbar on scroll
+        if (currentScrollY > lastScrollY && currentScrollY > 200) {
+          nav.style.transform = 'translateY(-100%)';
+        } else {
+          nav.style.transform = 'translateY(0)';
+        }
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  });
+</script>
+
+<style>
+  nav {
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+  }
+  
+  #mobile-menu-button svg {
+    transition: transform 0.3s ease;
+  }
+</style>

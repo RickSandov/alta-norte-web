@@ -1,0 +1,96 @@
+---
+import { Title, Button } from "./shared";
+
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+---
+
+<section
+  id="cotizacion"
+  class="py-20 bg-gradient-to-br from-secondary-800 to-primary-800 relative overflow-hidden"
+>
+  <!-- Decorative Elements -->
+  <div
+    class="absolute top-0 right-0 w-96 h-96 bg-primary-400/10 rounded-full -translate-y-48 translate-x-48"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-80 h-80 bg-secondary-400/10 rounded-full translate-y-40 -translate-x-40"
+  >
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <!-- Content -->
+    <div class="text-white space-y-8">
+      <div>
+        <Title
+          as="h2"
+          variant="luxury"
+          size="3xl"
+          class="text-white mb-6 font-bold"
+        >
+          {translations.quote.title}
+        </Title>
+
+        <p class="text-xl text-primary-100 mb-6 max-w-2xl mx-auto">
+          {translations.quote.description}
+        </p>
+      </div>
+
+      <!-- Coming Soon Badge -->
+      <div
+        class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20"
+      >
+        <svg
+          class="w-5 h-5 text-primary-300 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span class="text-white font-medium">
+          {translations.quote.subtitle}
+        </span>
+      </div>
+
+      <!-- Price Teaser -->
+      <!-- <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+        <div class="text-6xl font-bold text-white mb-4">$???</div>
+        <p class="text-primary-200 text-lg">Precio por m²</p>
+        <p class="text-primary-100 text-sm mt-2">Consulta condiciones especiales de preventa</p>
+      </div> -->
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <Button
+          variant="primary"
+          size="lg"
+          class="bg-white text-primary-800 hover:bg-primary-50 px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          Solicitar Información
+        </Button>
+        <button
+          class="text-white border-2 border-white/50 hover:border-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+        >
+          Agendar Visita
+        </button>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="text-primary-200 text-sm space-y-2">
+        <p>¿Tienes preguntas? Contáctanos</p>
+        <p class="font-medium text-white">
+          contacto@altanorte.mx | +52 (xxx) xxx-xxxx
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

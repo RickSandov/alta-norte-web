@@ -1,0 +1,153 @@
+---
+import { Logo } from "./shared";
+
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+---
+
+<section id="planos" class="py-24 bg-gray-50" data-animate>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left Content -->
+      <div class="space-y-8" data-animate-delay="100">
+        <div class="space-y-6">
+          <h2 class="text-4xl lg:text-5xl font-bold text-primary leading-tight">
+            {translations.plans.title}
+          </h2>
+
+          <p class="text-xl text-gray-700 leading-relaxed">
+            {translations.plans.description}
+          </p>
+        </div>
+
+        <!-- Status Legend -->
+        <div class="flex flex-wrap items-center gap-6" data-animate-delay="200">
+          <div class="flex items-center space-x-3">
+            <div class="w-4 h-4 bg-primary rounded-full"></div>
+            <span class="text-gray-700 font-medium"
+              >{translations.plans.legend.available}</span
+            >
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="w-4 h-4 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 font-medium"
+              >{translations.plans.legend.sold}</span
+            >
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div data-animate-delay="300">
+          <button
+            class="inline-flex items-center bg-surface hover:bg-surface/80 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-lg group"
+          >
+            <span>{translations.plans.cta}</span>
+            <svg
+              class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Content - Interactive Map -->
+      <div class="relative" data-animate-delay="200">
+        <div class="relative overflow-hidden rounded-2xl bg-white shadow-2xl">
+          <!-- Map Container -->
+          <div class="aspect-[4/3] bg-[#16342E] relative p-3">
+            <!-- <div
+            class="aspect-[4/3] bg-gradient-to-br from-green-100 to-green-200 relative p-3"
+          > -->
+            <!-- Interactive Lots Map -->
+            <div class="aspect-square">
+              <p class="text-white text-center text-3xl mt-4">Coming soon</p>
+              <img src="/images/plano.png" alt="" />
+            </div>
+
+            <!-- Interactive tooltip (hidden by default) -->
+            <div
+              id="lot-tooltip"
+              class="absolute bg-white shadow-lg rounded-lg p-3 pointer-events-none opacity-0 transition-opacity z-10 border"
+            >
+              <p class="font-semibold text-sm text-gray-800" id="tooltip-lot">
+              </p>
+              <p class="text-xs text-gray-600" id="tooltip-size"></p>
+              <p class="text-xs" id="tooltip-status"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ translations }}>
+  // Interactive map functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const lots = document.querySelectorAll(".lot-item");
+    const tooltip = document.getElementById("lot-tooltip");
+    const tooltipLot = document.getElementById("tooltip-lot");
+    const tooltipSize = document.getElementById("tooltip-size");
+    const tooltipStatus = document.getElementById("tooltip-status");
+
+    lots.forEach((lot) => {
+      lot.addEventListener("mouseenter", function (e) {
+        if (tooltip && tooltipLot && tooltipSize && tooltipStatus) {
+          const rect = e.target.getBoundingClientRect();
+          const lotId = e.target.getAttribute("data-lot");
+          const size = e.target.getAttribute("data-size");
+          const status = e.target.getAttribute("data-status");
+
+          tooltipLot.textContent = `${translations.plans.tooltip.lot} ${lotId}`;
+          tooltipSize.textContent = `${size} ${translations.plans.tooltip.size}`;
+
+          if (status === "available") {
+            tooltipStatus.textContent = translations.plans.tooltip.available;
+            tooltipStatus.className = "text-xs text-green-600";
+          } else {
+            tooltipStatus.textContent = translations.plans.tooltip.sold;
+            tooltipStatus.className = "text-xs text-red-600";
+          }
+
+          tooltip.style.left = rect.right + 10 + "px";
+          tooltip.style.top = rect.top + "px";
+          tooltip.classList.remove("opacity-0");
+          tooltip.classList.add("opacity-100");
+        }
+      });
+
+      lot.addEventListener("mouseleave", function () {
+        if (tooltip) {
+          tooltip.classList.remove("opacity-100");
+          tooltip.classList.add("opacity-0");
+        }
+      });
+
+      lot.addEventListener("click", function (e) {
+        const lotId = e.target.getAttribute("data-lot");
+        const status = e.target.getAttribute("data-status");
+
+        if (status === "available") {
+          alert(
+            `¡Interesado en el lote ${lotId}! Contacta con nuestro equipo de ventas.`
+          );
+        } else {
+          alert(
+            `El lote ${lotId} ya está vendido. Te mostraremos otras opciones disponibles.`
+          );
+        }
+      });
+    });
+  });
+</script>

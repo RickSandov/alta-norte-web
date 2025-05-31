@@ -1,0 +1,172 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'outline' | 'ghost';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  type?: 'button' | 'submit';
+  disabled?: boolean;
+  fullWidth?: boolean;
+  loading?: boolean;
+  rounded?: boolean;
+  class?: string;
+  onclick?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  disabled = false,
+  fullWidth = false,
+  loading = false,
+  rounded = false,
+  class: className = '',
+  onclick,
+  ...rest
+} = Astro.props;
+const variantStyles = {
+  primary: `
+    bg-[#2A3729] dark:bg-[#265143]
+    text-white dark:text-white
+    hover:bg-[#061717] dark:hover:bg-[#2A3729]
+    focus:ring-[#2A3729]/30 dark:focus:ring-[#265143]/30
+    shadow-lg hover:shadow-xl
+    border border-[#2A3729]/20 dark:border-[#265143]/20
+  `,
+  secondary: `
+    bg-white dark:bg-[#272831]
+    text-[#2A3729] dark:text-white
+    border border-[#2A3729]/20 dark:border-[#265143]/40
+    hover:bg-neutral-50 dark:hover:bg-[#2A3729]
+    focus:ring-[#2A3729]/20 dark:focus:ring-[#265143]/30
+    shadow-lg hover:shadow-xl
+  `,
+  success: `
+    bg-green-600 dark:bg-green-700
+    text-white dark:text-white
+    hover:bg-green-700 dark:hover:bg-green-600
+    focus:ring-green-500/30 dark:focus:ring-green-600/30
+    shadow-lg hover:shadow-xl
+    border border-green-600/20 dark:border-green-700/20
+  `,  danger: `
+    bg-red-600 dark:bg-red-700
+    text-white dark:text-white
+    hover:bg-red-700 dark:hover:bg-red-600
+    focus:ring-red-500/30 dark:focus:ring-red-600/30
+    shadow-lg hover:shadow-xl
+    border border-red-600/20 dark:border-red-700/20
+  `,
+  warning: `
+    bg-yellow-500 dark:bg-yellow-600
+    text-black dark:text-white
+    hover:bg-yellow-600 dark:hover:bg-yellow-500
+    focus:ring-yellow-500/30 dark:focus:ring-yellow-600/30
+    shadow-lg hover:shadow-xl
+    border border-yellow-500/20 dark:border-yellow-600/20
+  `,
+  info: `
+    bg-blue-600 dark:bg-blue-700
+    text-white dark:text-white
+    hover:bg-blue-700 dark:hover:bg-blue-600
+    focus:ring-blue-500/30 dark:focus:ring-blue-600/30
+    shadow-lg hover:shadow-xl
+    border border-blue-600/20 dark:border-blue-700/20
+  `,
+  dark: `
+    bg-[#0D1518] dark:bg-[#061717]
+    text-white dark:text-white
+    hover:bg-[#272831] dark:hover:bg-[#0D1518]
+    focus:ring-[#0D1518]/30 dark:focus:ring-[#061717]/30
+    shadow-lg hover:shadow-xl
+    border border-[#0D1518]/20 dark:border-[#061717]/20
+  `,  outline: `
+    bg-transparent dark:bg-transparent
+    text-[#2A3729] dark:text-white
+    border-2 border-[#2A3729] dark:border-[#265143]
+    hover:bg-[#2A3729] hover:text-white
+    dark:hover:bg-[#265143] dark:hover:text-white
+    focus:ring-[#2A3729]/30 dark:focus:ring-[#265143]/30
+    shadow-none hover:shadow-lg
+  `,
+  ghost: `
+    bg-transparent dark:bg-transparent
+    text-[#2A3729] dark:text-neutral-300
+    border-none
+    hover:bg-[#2A3729]/10 dark:hover:bg-[#265143]/10
+    focus:ring-[#2A3729]/20 dark:focus:ring-[#265143]/20
+    shadow-none
+  `,
+};
+
+const sizeStyles = {
+  xs: 'text-xs px-3 py-1.5 min-h-[32px]',
+  sm: 'text-sm px-4 py-2 min-h-[36px]',
+  md: 'text-base px-6 py-3 min-h-[44px]',
+  lg: 'text-lg px-8 py-4 min-h-[52px]',
+  xl: 'text-xl px-10 py-5 min-h-[60px]',
+};
+const buttonClasses = [
+  'relative',
+  'inline-flex',
+  'items-center',
+  'justify-center',
+  'font-semibold',
+  'transition-all',
+  'duration-300',
+  'ease-out',
+  'focus:outline-none',
+  'focus:ring-4',
+  'focus:ring-offset-2',
+  'focus:ring-offset-white',
+  'dark:focus:ring-offset-[#0D1518]',
+  'disabled:opacity-50',
+  'disabled:cursor-not-allowed',
+  'disabled:transform-none',
+  'transform',
+  'hover:scale-[1.02]',
+  'active:scale-[0.98]',
+  variantStyles[variant],
+  sizeStyles[size],
+  fullWidth ? 'w-full' : '',
+  rounded ? 'rounded-full' : 'rounded-lg',
+  loading ? 'cursor-wait' : '',
+  className
+].filter(Boolean).join(' ');
+---
+<button
+  type={type}
+  disabled={disabled || loading}
+  class={buttonClasses}
+  onclick={onclick}
+  {...rest}
+>
+  {loading && (
+    <svg
+      class="animate-spin -ml-1 mr-3 h-4 w-4"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4">
+      </circle>
+      <path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+      </path>
+    </svg>
+  )}
+  
+  <slot />
+</button>
+
+<style>
+  button {
+    will-change: transform;
+  }
+</style>

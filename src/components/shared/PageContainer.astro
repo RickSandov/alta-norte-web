@@ -1,0 +1,71 @@
+---
+export interface Props {
+  variant?: 'default' | 'luxury' | 'minimal';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '7xl' | 'full';
+  class?: string;
+}
+
+const { 
+  variant = 'luxury', 
+  maxWidth = '7xl', 
+  class: className = ''
+} = Astro.props;
+
+const maxWidthMap = {
+  sm: 'max-w-sm', 
+  md: 'max-w-md', 
+  lg: 'max-w-lg', 
+  xl: 'max-w-xl',
+  '2xl': 'max-w-2xl', 
+  '7xl': 'max-w-7xl', 
+  full: 'max-w-full',
+};
+
+const getBackgroundPattern = () => {
+  switch (variant) {
+    case 'luxury':
+      return `bg-gradient-to-br from-neutral-50 via-white to-neutral-100
+          dark:from-[#0D1518] dark:via-[#272831] dark:to-[#061717]
+          relative before:absolute before:inset-0 
+          before:bg-gradient-to-r before:from-transparent before:via-[#2A3729]/5 before:to-transparent
+          dark:before:via-[#265143]/10`;
+    case 'minimal':
+      return 'bg-white dark:bg-[#272831]';
+    default:
+      return 'bg-neutral-50 dark:bg-[#0D1518]';
+  }
+};
+const containerClasses = [
+  'min-h-screen',
+  getBackgroundPattern(),
+  'transition-colors',
+  'duration-500',
+  'ease-out',
+  className
+].filter(Boolean).join(' ');
+
+const contentClasses = [
+  maxWidthMap[maxWidth],
+  'mx-auto',
+  'px-6',
+  'sm:px-8',
+  'lg:px-12',
+  'pt-8',
+  'pb-24',
+  'relative',
+  'z-10'
+].join(' ');
+---
+
+<div class={containerClasses}>
+  <div class={contentClasses}>
+    <slot />
+  </div>
+  
+  {variant === 'luxury' && (
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-1/4 -left-64 w-128 h-128 bg-[#2A3729]/5 dark:bg-[#265143]/10 rounded-full blur-3xl animate-pulse opacity-50"></div>
+      <div class="absolute bottom-1/4 -right-64 w-128 h-128 bg-[#265143]/5 dark:bg-[#2A3729]/10 rounded-full blur-3xl animate-pulse opacity-50" style="animation-delay: 1.5s;"></div>
+    </div>
+  )}
+</div>

@@ -1,0 +1,64 @@
+---
+export interface LogoProps {
+  variant?: 'isologo' | 'isologo-dark' | 'horizontal' | 'horizontal-vl' | 'png';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'auto';
+  className?: string;
+  width?: number;
+  height?: number;
+}
+
+const { 
+  variant = 'isologo', 
+  size = 'md', 
+  className = '', 
+  width, 
+  height 
+} = Astro.props as LogoProps;
+
+// Size presets for different logo variants
+const sizeClasses = {
+  isologo: {
+    sm: 'w-8 h-10',
+    md: 'w-12 h-15', 
+    lg: 'w-16 h-20',
+    xl: 'w-24 h-30',
+    auto: 'w-auto h-auto'
+  },
+  horizontal: {
+    sm: 'w-16 h-6',
+    md: 'w-24 h-9',
+    lg: 'w-32 h-12',
+    xl: 'w-48 h-18',
+    auto: 'w-auto h-auto'
+  }
+};
+
+// Logo paths
+const logoSources = {
+  'isologo': '/isologo.svg',
+  'isologo-dark': '/isologo_dark.svg', 
+  'horizontal': '/logo_horizontal.svg',
+  'horizontal-vl': '/logo_horizontal_vl.svg',
+  'png': '/logo.png'
+};
+
+const logoSrc = logoSources[variant];
+
+// Determine size class based on variant
+const variantSizeClasses = variant.includes('horizontal') 
+  ? sizeClasses.horizontal 
+  : sizeClasses.isologo;
+
+const sizeClass = !width && !height ? variantSizeClasses[size] : '';
+const finalClassName = `${sizeClass} ${className}`.trim();
+
+const logoProps = {
+  class: finalClassName,
+  alt: 'Alta Norte - Desarrollo Campestre de Lujo',
+  loading: 'eager' as const,
+  ...(width && { width }),
+  ...(height && { height })
+};
+---
+
+<img src={logoSrc} {...logoProps} />

@@ -1,0 +1,281 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navigation from "../components/Navigation.astro";
+import HeroSection from "../components/HeroSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import LifestyleSection from "../components/LifestyleSection.astro";
+import InteractivePlansSection from "../components/InteractivePlansSection.astro";
+import VirtualTourSection from "../components/VirtualTourSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
+
+import { getTranslations, getLangFromUrl } from "../i18n";
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = await getTranslations(currentLang);
+
+const pageTitle =
+  currentLang === "en"
+    ? "Alta Norte - Country Development | Sierra Madre"
+    : "Alta Norte - Desarrollo Campestre de Lujo | Sierra Madre";
+
+const pageDescription =
+  currentLang === "en"
+    ? "Discover Alta Norte, an exclusive country development in the Sierra Madre. Luxury lots surrounded by nature, first-class amenities and an extraordinary living experience."
+    : "Descubre Alta Norte, un exclusivo desarrollo campestre en la Sierra Madre. Lotes de lujo rodeados de naturaleza, amenidades de primera clase y una experiencia de vida extraordinaria.";
+---
+
+<Layout title={pageTitle} description={pageDescription} lang={currentLang}>
+  <!-- Navigation -->
+  <Navigation currentLang={currentLang} translations={t} />
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <HeroSection translations={t} />
+
+    <!-- About Section -->
+    <AboutSection translations={t} />
+
+    <!-- Lifestyle & Amenities Section -->
+    <LifestyleSection translations={t} />
+
+    <!-- Interactive Plans Section -->
+    <InteractivePlansSection translations={t} />
+
+    <!-- Virtual Tour Section -->
+    <VirtualTourSection translations={t} />
+
+    <!-- Contact Section -->
+    <ContactSection translations={t} />
+  </main>
+
+  <!-- Footer -->
+  <Footer translations={t} currentLang={currentLang} />
+</Layout>
+
+<!-- Enhanced Scripts for Better UX -->
+<script>
+  // Intersection Observer for scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px",
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate-in");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Enhanced loading and animation system
+  document.addEventListener("DOMContentLoaded", () => {
+    // Observe all sections for animation
+    const sections = document.querySelectorAll("section[data-animate]");
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Observe individual elements for staggered animations
+    const animatedElements = document.querySelectorAll("[data-animate-delay]");
+    animatedElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+    // Enhanced parallax for hero section
+    const parallaxElements = document.querySelectorAll("[data-parallax]");
+    
+    function updateParallax() {
+      const scrolled = window.pageYOffset;
+      
+      parallaxElements.forEach((element) => {
+        const speed = parseFloat(element.getAttribute("data-parallax")) || 0.5;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+    }
+
+    // Optimized scroll handling
+    let ticking = false;
+    function handleScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+  });
+
+  // Loading animation with fade in
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    
+    // Trigger initial animations
+    setTimeout(() => {
+      const heroElements = document.querySelectorAll(".hero-animate");
+      heroElements.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add("animate-in");
+        }, index * 200);
+      });
+    }, 300);
+  });
+
+  // Enhanced smooth scrolling for navigation
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Loading and Animation States */
+  body:not(.loaded) {
+    overflow: hidden;
+  }
+
+  body:not(.loaded)::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a3729 0%, #265143 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+  }
+
+  body:not(.loaded)::after {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 100px;
+    background-image: url('/isologo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: brightness(0) invert(1);
+    z-index: 10000;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  body.loaded::before,
+  body.loaded::after {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* Enhanced Animation Classes */
+  [data-animate], [data-animate-delay] {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-animate].animate-in, [data-animate-delay].animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hero-animate {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered delay animations */
+  [data-animate-delay="100"].animate-in { transition-delay: 0.1s; }
+  [data-animate-delay="200"].animate-in { transition-delay: 0.2s; }
+  [data-animate-delay="300"].animate-in { transition-delay: 0.3s; }
+  [data-animate-delay="400"].animate-in { transition-delay: 0.4s; }
+  [data-animate-delay="500"].animate-in { transition-delay: 0.5s; }
+
+  /* Enhanced focus styles for accessibility */
+  a:focus,
+  button:focus {
+    outline: 3px solid #2a3729;
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    body {
+      background: white;
+      color: black;
+    }
+
+    .bg-primary, .bg-secondary, .bg-surface {
+      background: black !important;
+    }
+
+    .text-gray-300,
+    .text-gray-400,
+    .text-gray-600 {
+      color: black !important;
+    }
+
+    .text-white {
+      color: white !important;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    [data-parallax] {
+      transform: none !important;
+    }
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Main container styling */
+  main {
+    overflow-x: hidden;
+  }
+</style>

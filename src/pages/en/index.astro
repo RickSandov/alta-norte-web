@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import AboutSection from "../../components/AboutSection.astro";
+import AmenitiesSection from "../../components/AmenitiesSection.astro";
+import InteractivePlansSection from "../../components/InteractivePlansSection.astro";
+import CTASection from "../../components/CTASection.astro";
+import VirtualTourSection from "../../components/VirtualTourSection.astro";
+import Footer from "../../components/Footer.astro";
+
+import { getTranslations } from "../../i18n";
+
+const currentLang = "en";
+const t = await getTranslations(currentLang);
+
+const pageTitle = "Alta Norte - Luxury Country Development | Sierra Madre";
+const pageDescription =
+  "Discover Alta Norte, an exclusive country development in the Sierra Madre. Luxury lots surrounded by nature, first-class amenities and an extraordinary living experience.";
+---
+
+<Layout title={pageTitle} description={pageDescription} lang={currentLang}>
+  <!-- Navigation -->
+  <Navigation currentLang={currentLang} translations={t} />
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <HeroSection translations={t} />
+
+    <!-- About Section -->
+    <AboutSection translations={t} />
+
+    <!-- Amenities Section -->
+    <AmenitiesSection translations={t} />
+
+    <!-- Interactive Plans Section -->
+    <InteractivePlansSection translations={t} />
+
+    <!-- CTA Section -->
+    <CTASection translations={t} />
+
+    <!-- Virtual Tour Section -->
+    <VirtualTourSection translations={t} />
+  </main>
+
+  <!-- Footer -->
+  <Footer translations={t} currentLang={currentLang} />
+</Layout>

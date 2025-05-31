@@ -1,0 +1,235 @@
+---
+import { Logo } from "./shared";
+
+interface Props {
+  translations: any;
+}
+
+const { translations } = Astro.props;
+---
+
+<section
+  id="nosotros"
+  class="relative py-24 bg-white overflow-hidden"
+  data-animate
+>
+  <!-- Background with mountain silhouette -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-white">
+    <svg
+      viewBox="0 0 1200 300"
+      class="absolute bottom-0 w-full h-auto opacity-10"
+    >
+      <path
+        d="M0,300 L0,200 L200,150 L400,180 L600,120 L800,160 L1000,100 L1200,140 L1200,300 Z"
+        fill="#2a3729"></path>
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Hero Content -->
+    <div class="text-center mb-20" data-animate-delay="100">
+      <div class="flex flex-col items-center space-y-6">
+        <!-- Logo -->
+        <Logo
+          variant="isologo-dark"
+          width={80}
+          height={100}
+          className="opacity-80"
+        />
+        <h1 class="text-5xl lg:text-7xl font-bold text-primary leading-tight">
+          {translations.about.hero_title}
+        </h1>
+      </div>
+      <div class="mt-8">
+        <button
+          class="inline-flex items-center bg-primary hover:bg-primary-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-lg group"
+        >
+          <span>{translations.about.hero_cta}</span>
+          <svg
+            class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- What is Alta Norte Section -->
+    <div class="grid lg:grid-cols-2 gap-16 items-start mb-20">
+      <div class="space-y-8" data-animate-delay="200">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary">
+          {translations.about.title}
+        </h2>
+        <p class="text-xl text-gray-700 leading-relaxed">
+          {translations.about.description}
+        </p>
+      </div>
+
+      <!-- Feature Icons Grid -->
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-8"
+        data-animate-delay="300"
+      >
+        <!-- Lotes campestres -->
+        <div class="text-center space-y-3">
+          <div
+            class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-primary">
+              {translations.about.features.lots.title}
+            </p>
+            <p class="text-sm text-gray-600">
+              {translations.about.features.lots.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <!-- Amenidades de lujo -->
+        <div class="text-center space-y-3">
+          <div
+            class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-primary">
+              {translations.about.features.amenities.title}
+            </p>
+            <p class="text-sm text-gray-600">
+              {translations.about.features.amenities.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <!-- Pista de esquí -->
+        <div class="text-center space-y-3">
+          <div
+            class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 3l14 9-14 9V3z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-primary">
+              {translations.about.features.skiing.title}
+            </p>
+            <p class="text-sm text-gray-600">
+              {translations.about.features.skiing.subtitle}
+            </p>
+          </div>
+        </div>
+
+        <!-- Actividades recreativas -->
+        <div class="text-center space-y-3">
+          <div
+            class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-primary">
+              {translations.about.features.activities.title}
+            </p>
+            <p class="text-sm text-gray-600">
+              {translations.about.features.activities.subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lifestyle Image Section -->
+    <div class="relative mb-20" data-animate-delay="400">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Tagline -->
+        <div class="space-y-8">
+          <h2 class="text-4xl lg:text-5xl font-bold text-primary leading-tight">
+            {translations.about.tagline_1}<br />
+            <span class="text-secondary">{translations.about.tagline_2}</span>
+          </h2>
+        </div>
+
+        <!-- Right: Lifestyle Image Placeholder -->
+        <div class="relative">
+          <div
+            class="aspect-[16/10] bg-gradient-to-br from-primary-200 via-secondary-200 to-primary-300 rounded-2xl overflow-hidden relative"
+          >
+            <!-- Overlay for lifestyle scene -->
+            <div class="absolute inset-0 bg-black/10"></div>
+
+            <!-- Placeholder for infinity pool scene -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <img
+                src="/images/ski.jpg"
+                alt="Lifestyle scene"
+                class="w-full h-full object-cover rounded-2xl opacity-80"
+              />
+              <!-- <div class="text-center text-primary-800 space-y-4">
+                <svg class="w-16 h-16 mx-auto opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <p class="text-lg font-medium">Mountain Living</p>
+                <p class="text-sm opacity-80">Infinity pool overlooking Sierra Madre</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

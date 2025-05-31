@@ -1,0 +1,142 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "lifestyle": "Lifestyle",
+    "plans": "Plans",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "LIVE THE EXTRAORDINARY",
+    "title": "ALTA NORTE",
+    "subtitle": "An exclusive country development nestled in the majesty of the Sierra Madre, designed for those seeking to live the extraordinary",
+    "cta": "QUOTE AND RESERVE YOUR LOT",
+    "scroll": "EXPLORE"
+  },
+  "about": {
+    "hero_title": "ALTA NORTE",
+    "hero_cta": "QUOTE AND RESERVE YOUR LOT",
+    "title": "WHAT IS ALTA NORTE?",
+    "description": "It's not just land, it's a lifestyle nestled in Sierra Madre.",
+    "tagline_1": "HERE YOU LIVE DIFFERENTLY,",
+    "tagline_2": "HERE YOU LIVE BETTER.",
+    "features": {
+      "lots": {
+        "title": "Country",
+        "subtitle": "lots of various sizes"
+      },
+      "amenities": {
+        "title": "Luxury",
+        "subtitle": "amenities"
+      },
+      "skiing": {
+        "title": "Ski",
+        "subtitle": "slope unique in the region"
+      },
+      "activities": {
+        "title": "Recreational",
+        "subtitle": "activities"
+      }
+    }
+  },
+  "lifestyle": {
+    "title": "LIFESTYLE",
+    "subtitle": "& AMENITIES",
+    "description": "Experience unparalleled luxury with our exclusive amenities, including a state-of-the-art ski resort, serene hiking trails, and premier camping facilities. Embrace a lifestyle amidst breathtaking landscapes.",
+    "categories": {
+      "ski_resort": "SKI RESORT",
+      "hiking_trails": "HIKING TRAILS",
+      "camping": "CAMPING"
+    },
+    "amenities": {
+      "ski_resort": "SKI RESORT",
+      "hiking": "HIKING",
+      "camping": "CAMPING",
+      "and_more": "AND MORE"
+    },
+    "badge": "Premium Experience"
+  },
+  "plans": {
+    "title": "INTERACTIVE PLAN",
+    "description": "Take an immersive virtual tour of our residential community and explore the stunning surroundings from the comfort of your home.",
+    "legend": {
+      "available": "Available",
+      "sold": "Sold"
+    },
+    "cta": "INTERESTED IN THIS LOT? QUOTE IT!",
+    "tooltip": {
+      "lot": "Lot",
+      "size": "m²",
+      "available": "Available",
+      "sold": "Sold"
+    }
+  },
+  "tour": {
+    "title": "360° VIRTUAL",
+    "subtitle": "TOUR",
+    "description": "Take an immersive virtual tour of our residential community and explore the stunning surroundings from the comfort of your home",
+    "cta": "START TOUR",
+    "badge": "VR Ready",
+    "experience": "360° Experience Coming Soon",
+    "immersive": "Immersive Virtual Tour"
+  },
+  "contact": {
+    "title": "GET IN TOUCH",
+    "description": "Connect with our sales team to learn more about the community and discover the opportunities that await.",
+    "section_title": "CONTACT",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "SEND MESSAGE"
+    },
+    "info": {
+      "phone": "Phone",
+      "email": "Email"
+    },
+    "details": {
+      "phone": "+1 (555) 123-4567",
+      "email": "info@altanorte.mx"
+    },
+    "success": "Message sent successfully! We will contact you soon.",
+    "error": "Please complete all fields."
+  },
+  "quote": {
+    "title": "QUOTE YOUR LOT",
+    "subtitle": "Coming Soon",
+    "description": "Get exclusive information about our lots and be the first to know about presale opportunities."
+  },
+  "amenities": {
+    "title": "Amenities",
+    "nature": "Nature & Landscapes",
+    "skiing": "Ski Resort",
+    "sports": "Sports & Recreation"
+  },
+  "footer": {
+    "tagline": "An extraordinary lifestyle in Sierra Madre",
+    "links": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About",
+      "lifestyle": "Lifestyle",
+      "plans": "Plans",
+      "contact": "Contact"
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "info@altanorte.mx",
+      "phone": "+1 (555) 123-4567",
+      "location": "Sierra Madre, Mexico"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "whatsapp": "WhatsApp"
+    },
+    "copyright": "© 2025 Alta Norte. All rights reserved.",
+    "company": {
+      "name": "ALTA NORTE",
+      "type": "Country Development"
+    }
+  }
+}

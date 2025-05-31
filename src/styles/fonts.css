@@ -1,0 +1,108 @@
+/* Amble Font Family - Institutional Font */
+
+/* Amble Light */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-light-webfont.woff2') format('woff2'),
+       url('/fonts/amble-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Amble Light Italic */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-lightitalic-webfont.woff2') format('woff2'),
+       url('/fonts/amble-lightitalic-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Amble Light Condensed */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-lightcondensed-webfont.woff2') format('woff2'),
+       url('/fonts/amble-lightcondensed-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: condensed;
+  font-display: swap;
+}
+
+/* Amble Light Condensed Italic */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-lightcondenseditalic-webfont.woff2') format('woff2'),
+       url('/fonts/amble-lightcondenseditalic-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: condensed;
+  font-display: swap;
+}
+
+/* Amble Regular (using light as base since no regular version available) */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-light-webfont.woff2') format('woff2'),
+       url('/fonts/amble-light-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Amble Regular Italic */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-italic-webfont.woff2') format('woff2'),
+       url('/fonts/amble-italic-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Amble Bold */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-bold-webfont.woff2') format('woff2'),
+       url('/fonts/amble-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Amble Bold Italic */
+@font-face {
+  font-family: 'Amble';
+  src: url('/fonts/amble-bolditalic-webfont.woff2') format('woff2'),
+       url('/fonts/amble-bolditalic-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Font fallback stack for better loading experience */
+.font-amble {
+  font-family: 'Amble', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Enhanced readability for Amble */
+.amble-text {
+  font-family: 'Amble', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1, 'liga' 1;
+}
+
+/* Specific weights for better control */
+.amble-light { font-weight: 300; }
+.amble-regular { font-weight: 400; }
+.amble-bold { font-weight: 700; }
+
+/* Condensed variants */
+.amble-condensed {
+  font-stretch: condensed;
+  font-weight: 300;
+}

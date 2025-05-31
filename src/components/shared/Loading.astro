@@ -1,0 +1,53 @@
+---
+export interface Props {
+  text?: string;
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { 
+  text = 'Cargando...', 
+  size = 'md',
+  class: className = ''
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'w-4 h-4',
+  md: 'w-8 h-8',
+  lg: 'w-12 h-12'
+};
+
+const textSizeClasses = {
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-lg'
+};
+
+const containerClasses = [
+  'flex',
+  'flex-col',
+  'items-center',
+  'justify-center',
+  'p-8',
+  className
+].filter(Boolean).join(' ');
+---
+<div class={containerClasses}>
+  <div class={`animate-spin rounded-full border-2 border-[#2A3729]/20 border-t-[#2A3729] dark:border-[#265143]/20 dark:border-t-[#265143] ${sizeClasses[size]} mb-4`}></div>
+  <p class={`text-[#2A3729] dark:text-neutral-300 ${textSizeClasses[size]}`}>{text}</p>
+</div>
+
+<style>
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
